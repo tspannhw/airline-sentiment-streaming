@@ -50,3 +50,14 @@ annonym STRING, favourites_count STRING, airlinesentiment STRING, retweet_count 
 statuses_count STRING, followers_count STRING, `location` STRING, text STRING, time STRING, airline STRING, 
 `timestamp` STRING )
 STORED AS PARQUET;
+
+
+CREATE TABLE IF NOT EXISTS airlinesentimentkudu (tweetid STRING, `timestamp` STRING, friends_count STRING, hashtags STRING, listed_count STRING, 
+annonym STRING, favourites_count STRING, airlinesentiment STRING, retweet_count STRING, 
+statuses_count STRING, followers_count STRING, `location` STRING, text STRING, time STRING, airline STRING, 
+PRIMARY KEY (tweetid, `timestamp`)
+)
+PARTITION BY HASH PARTITIONS 4
+STORED AS KUDU
+TBLPROPERTIES ('kudu.num_tablet_replicas' = '1');
+
