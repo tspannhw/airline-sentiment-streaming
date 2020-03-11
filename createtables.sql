@@ -45,9 +45,21 @@ STORED AS PARQUET;
 
 
 
-CREATE TABLE IF NOT EXISTS airlinesentiment (friendscount STRING, hashtags STRING, listedcount STRING,  annonym STRING, favouritescount STRING, airlinesentiment STRING, airlinepolarity STRING,  retweetcount STRING, tweetid STRING, statusescount STRING, followerscount STRING, tweetlocation STRING, tweettext STRING, tweettime STRING, airline STRING,  tweettimestamp STRING ) STORED AS PARQUET ;
+CREATE EXTERNAL TABLE IF NOT EXISTS airlinesentiment (friendscount STRING, hashtags STRING, listedcount STRING,  
+annonym STRING, favouritescount STRING, airlinesentiment STRING, airlinepolarity STRING,  retweetcount STRING, 
+tweetid STRING, statusescount STRING, followerscount STRING, tweetlocation STRING, tweettext STRING, 
+tweettime STRING, airline STRING,  tweettimestamp STRING ) 
+STORED AS PARQUET
+LOCATION 's3a://cdp-sandbox-default-se/datalake/warehouse/tablespace/external/hive/airlinesentiment'
+ ;
 
-
+  
+  CREATE EXTERNAL TABLE IF NOT EXISTS airlinesentiment (friendscount STRING, hashtags STRING, listedcount STRING,  
+annonym STRING, favouritescount STRING, airlinesentiment STRING, airlinepolarity STRING,  retweetcount STRING, 
+tweetid STRING, statusescount STRING, followerscount STRING, tweetlocation STRING, tweettext STRING, 
+tweettime STRING, airline STRING,  tweettimestamp STRING ) 
+LOCATION 's3a://cdp-sandbox-default-se/datalake/warehouse/tablespace/external/hive/airlinesentiment'
+ ;
 
 CREATE TABLE IF NOT EXISTS airlinesentimentkudu (tweetid STRING, `timestamp` STRING, friends_count STRING, hashtags STRING, listed_count STRING, 
 annonym STRING, favourites_count STRING, airlinesentiment STRING, airlinepolarity STRING, retweet_count STRING, 
